@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgnua7mp5ugd2"]
+
+[ext_resource type="PackedScene" uid="uid://c0c5bk8q4botv" path="res://objects/key_listener.tscn" id="1_qc6i3"]
+[ext_resource type="PackedScene" uid="uid://bjbdbok88dyfc" path="res://objects/falling_key.tscn" id="2_sklrn"]
+[ext_resource type="PackedScene" uid="uid://my0vyubbvhxn" path="res://levels/game_ui.tscn" id="3_d65c1"]
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="key_listener" parent="." instance=ExtResource("1_qc6i3")]
+position = Vector2(-120, 280)
+key_name = "button_left"
+
+[node name="key_listener2" parent="." instance=ExtResource("1_qc6i3")]
+position = Vector2(-40, 280)
+frame = 1
+key_name = "button_down"
+
+[node name="key_listener3" parent="." instance=ExtResource("1_qc6i3")]
+position = Vector2(40, 280)
+frame = 2
+key_name = "button_up"
+
+[node name="key_listener4" parent="." instance=ExtResource("1_qc6i3")]
+position = Vector2(120, 280)
+frame = 3
+key_name = "button_right"
+
+[node name="FallingKey" parent="." instance=ExtResource("2_sklrn")]
+position = Vector2(-120, -350)
+
+[node name="GameUI" parent="." instance=ExtResource("3_d65c1")]
+offset_left = -610.0
+offset_top = -174.0
+offset_right = -610.0
+offset_bottom = -174.0

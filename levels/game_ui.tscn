@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://my0vyubbvhxn"]
+
+[ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
+[ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_451jp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 55.0
+offset_top = 43.0
+offset_right = 261.0
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 40
+text = "0 pts"
+
+[node name="ScreenText" parent="CanvasLayer" instance=ExtResource("2_tpbhn")]

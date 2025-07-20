@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6lcp3jjkr3nc"]
+
+[ext_resource type="Script" uid="uid://cf6ev5qvbpvci" path="res://screen_text.gd" id="1_iqv70"]
+[ext_resource type="FontFile" uid="uid://cj86fhovucwri" path="res://objects/RockBoys-7BajD.ttf" id="2_gwiqa"]
+
+[sub_resource type="Animation" id="Animation_gwiqa"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreLevelText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScoreLevelText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-90, 4), Vector2(-90, 10)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iqv70"]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreLevelText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScoreLevelText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-90, 4), Vector2(-90, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f0ah"]
+_data = {
+&"RESET": SubResource("Animation_gwiqa"),
+&"fall": SubResource("Animation_iqv70")
+}
+
+[node name="ScorePressText" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -4.0
+offset_right = 9.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iqv70")
+
+[node name="ScoreLevelText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.02
+offset_left = -90.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 45.04
+theme_override_colors/default_color = Color(1, 0.815686, 0, 1)
+theme_override_colors/font_outline_color = Color(0.905882, 0.627451, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("2_gwiqa")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]PERFECT!
+"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6f0ah")
+}
+autoplay = "RESET"
