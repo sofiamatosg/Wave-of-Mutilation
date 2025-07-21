@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgx2o2xtebrgv"]
+
+[ext_resource type="Texture2D" uid="uid://soepo026qaau" path="res://art/pixil-frame-0.png" id="1_3xh7g"]
+[ext_resource type="Script" uid="uid://chhyn4kopa4l1" path="res://objects/hold_tail.gd" id="2_o5ei2"]
+
+[node name="HoldTail" type="Sprite2D"]
+texture = ExtResource("1_3xh7g")
+script = ExtResource("2_o5ei2")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgnua7mp5ugd2"]
+[gd_scene load_steps=8 format=3 uid="uid://dgnua7mp5ugd2"]
 
 [ext_resource type="Texture2D" uid="uid://dj2lryh4oscn4" path="res://art/stephen-foster-memorial-day-illustration-with-copy-space-area-and-blue-background-suitable-to-use-on-memorial-day-event-vector.jpg" id="1_n0b0m"]
 [ext_resource type="PackedScene" uid="uid://c0c5bk8q4botv" path="res://objects/key_listener.tscn" id="1_qc6i3"]
 [ext_resource type="PackedScene" uid="uid://bjbdbok88dyfc" path="res://objects/falling_key.tscn" id="2_sklrn"]
 [ext_resource type="PackedScene" uid="uid://my0vyubbvhxn" path="res://levels/game_ui.tscn" id="3_d65c1"]
+[ext_resource type="PackedScene" uid="uid://cgx2o2xtebrgv" path="res://objects/hold_tail.tscn" id="4_wtvao"]
 [ext_resource type="PackedScene" uid="uid://dsoxkm5i4lmjp" path="res://level_editor.tscn" id="5_2i5ty"]
 
 [sub_resource type="Environment" id="Environment_d65c1"]
@@ -15,6 +16,7 @@ glow_enabled = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
 texture = ExtResource("1_n0b0m")
 
 [node name="key_listener" parent="." instance=ExtResource("1_qc6i3")]
@@ -39,6 +41,10 @@ key_name = "button_right"
 [node name="FallingKey" parent="." instance=ExtResource("2_sklrn")]
 position = Vector2(-120, -350)
 
+[node name="HoldTail" parent="FallingKey" instance=ExtResource("4_wtvao")]
+visible = false
+scale = Vector2(8, 12.874)
+
 [node name="GameUI" parent="." instance=ExtResource("3_d65c1")]
 offset_left = -610.0
 offset_top = -174.0
@@ -51,3 +57,15 @@ environment = SubResource("Environment_d65c1")
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [node name="LevelEditor" parent="." instance=ExtResource("5_2i5ty")]
+
+[node name="HoldTail2" parent="." instance=ExtResource("4_wtvao")]
+position = Vector2(62, 197)
+scale = Vector2(8, 12)
+
+[node name="HoldTail3" parent="." instance=ExtResource("4_wtvao")]
+position = Vector2(-23, 163)
+scale = Vector2(8, 12)
+
+[node name="HoldTail4" parent="." instance=ExtResource("4_wtvao")]
+position = Vector2(-499, 299)
+scale = Vector2(8, 12)

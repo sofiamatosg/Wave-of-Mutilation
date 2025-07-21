@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://0nk51vkbwjcd" path="res://objects/key_listener.gd" id="1_vgigu"]
 
 [sub_resource type="Animation" id="Animation_5o700"]
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,10 +12,10 @@ tracks/0/path = NodePath("GlowOverlay:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.255482, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1.3, 1.3, 1.3, 1)]
+"values": [Color(1.5, 1.5, 1.5, 0), Color(1.5, 1.5, 1.5, 1), Color(1.5, 1.5, 1.5, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vgigu"]
@@ -51,7 +51,7 @@ one_shot = true
 autostart = true
 
 [node name="GlowOverlay" type="Sprite2D" parent="."]
-modulate = Color(1.3, 1.3, 1.3, 1)
+modulate = Color(1.5, 1.5, 1.5, 0)
 texture = ExtResource("1_ewq7c")
 hframes = 4
 vframes = 3
@@ -61,6 +61,6 @@ frame = 4
 libraries = {
 &"": SubResource("AnimationLibrary_rphrv")
 }
-autoplay = "key_hit"
+autoplay = "RESET"
 
 [connection signal="timeout" from="RandomSpawnTimer" to="." method="_on_random_spawn_timer_timeout"]
