@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://my0vyubbvhxn"]
+[gd_scene load_steps=4 format=3 uid="uid://my0vyubbvhxn"]
 
 [ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
 [ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
+[ext_resource type="FontFile" uid="uid://cj86fhovucwri" path="res://objects/RockBoys-7BajD.ttf" id="2_ul118"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -20,7 +21,24 @@ offset_left = 55.0
 offset_top = 43.0
 offset_right = 261.0
 offset_bottom = 100.0
+theme_override_fonts/normal_font = ExtResource("2_ul118")
 theme_override_font_sizes/normal_font_size = 40
 text = "0 pts"
+scroll_active = false
+
+[node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 44.0
+offset_top = 107.0
+offset_right = 293.0
+offset_bottom = 164.0
+theme_override_fonts/normal_font = ExtResource("2_ul118")
+theme_override_font_sizes/normal_font_size = 40
+text = "0x Combo"
+scroll_active = false
 
 [node name="ScreenText" parent="CanvasLayer" instance=ExtResource("2_tpbhn")]
+offset_left = -36.0
+offset_top = 275.0
+offset_right = -36.0
+offset_bottom = 275.0

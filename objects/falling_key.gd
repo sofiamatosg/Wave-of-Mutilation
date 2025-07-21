@@ -22,9 +22,5 @@ func Setup(target_x:float, target_frame: int):
 	frame = target_frame
 	set_process(true)
 
-
-
-
-
 func _on_destroy_timer_timeout() -> void:
 	queue_free()

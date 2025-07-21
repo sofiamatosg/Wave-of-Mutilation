@@ -17,6 +17,10 @@ var great_press_score: float = 100
 var good_press_score: float = 50
 var ok_press_score: float = 20
 
+func _ready():
+	$GlowOverlay.frame = frame + 4
+	Signals.CreateFallingKey.connect(CreateFallingKey)
+
 func _process(delta):
 	if falling_key_queue.size() > 0:
 		
@@ -28,11 +32,13 @@ func _process(delta):
 			get_tree().get_root().call_deferred("add_child", st_inst)
 			st_inst.SetTextInfo("MISS")
 			st_inst.global_position = global_position + Vector2(0, -15)
-		
+			Signals.ResetCombo.emit()
+			
 		if Input.is_action_just_pressed(key_name):
 			var key_to_pop = falling_key_queue.pop_front()
 			var distance_from_pass = abs(key_to_pop.pass_treshold - key_to_pop.global_position.y)
-			print(distance_from_pass)
+			$AnimationPlayer.stop()
+			$AnimationPlayer.play("key_hit")
 			
 			var press_score_text:String = ""
 			if distance_from_pass > 3 and distance_from_pass <= perfect_press_treshold:
@@ -53,8 +59,11 @@ func _process(delta):
 			elif distance_from_pass < ok_press_treahold:
 				Signals.IncrementScore.emit(ok_press_score)
 				press_score_text = "OK"
+				Signals.IncrementCombo.emit()
+			
 			else:
 				press_score_text = "MISS"
+				Signals.ResetCombo.emit()
 			
 			key_to_pop.queue_free()
 			
@@ -63,15 +72,16 @@ func _process(delta):
 			st_inst.SetTextInfo(press_score_text)
 			st_inst.global_position = global_position + Vector2(0, -15)
 
-func CreateFallingKey():
-	var fk_inst = falling_key.instantiate()
-	get_tree().get_root().call_deferred("add_child", fk_inst)
-	fk_inst.Setup(position.x, frame + 4)
-	
-	falling_key_queue.push_back(fk_inst)
+func CreateFallingKey(button_name: String):
+	if button_name == key_name:
+		var fk_inst = falling_key.instantiate()
+		get_tree().get_root().call_deferred("add_child", fk_inst)
+		fk_inst.Setup(position.x, frame + 4)
+		
+		falling_key_queue.push_back(fk_inst)
 	
 	
 func _on_random_spawn_timer_timeout() -> void:
-	CreateFallingKey()
+	#CreateFallingKey()
 	$RandomSpawnTimer.wait_time = randf_range(0.4, 3)
 	$RandomSpawnTimer.start()

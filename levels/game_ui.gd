@@ -12,12 +12,12 @@ func _ready() -> void:
 	
 func IncrementScore(incr:int):
 	score += incr
-	%ScoreLabel.text = str(score) + " pts"
+	%ScoreLabel.text = " " + str(score) + " pts"
 
 func IncrementCombo():
 	combo_count += 1
-	$ComboLabel.text = str(combo_count)  + "x combo"
+	%ComboLabel.text =  " " + str(combo_count)  + "x combo"
 
 func ResetCombo():
 	combo_count = 0
-	$ComboLabel.text = ""
+	%ComboLabel.text =  " "
