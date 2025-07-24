@@ -4,5 +4,7 @@
 [ext_resource type="Script" uid="uid://chhyn4kopa4l1" path="res://objects/hold_tail.gd" id="2_o5ei2"]
 
 [node name="HoldTail" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(8, 8)
 texture = ExtResource("1_3xh7g")
 script = ExtResource("2_o5ei2")

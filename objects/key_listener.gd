@@ -39,33 +39,43 @@ func _process(delta):
 			var distance_from_pass = abs(key_to_pop.pass_treshold - key_to_pop.global_position.y)
 			$AnimationPlayer.stop()
 			$AnimationPlayer.play("key_hit")
-			
+			print(distance_from_pass)
 			var press_score_text:String = ""
-			if distance_from_pass > 3 and distance_from_pass <= perfect_press_treshold:
+			if key_to_pop.global_position.y > 344:
+				press_score_text = "MISS"
+				Signals.ResetCombo.emit()
+				falling_key_queue.pop_front()
+				key_to_pop.queue_free()
+			
+			elif distance_from_pass > 3 and distance_from_pass <= perfect_press_treshold:
 				Signals.IncrementScore.emit(perfect_press_score)
 				press_score_text = "PERFECT"
 				Signals.IncrementCombo.emit()
+				key_to_pop.queue_free()
 			
 			elif distance_from_pass < great_press_treshold:
 				Signals.IncrementScore.emit(great_press_score)
 				press_score_text = "GREAT"
 				Signals.IncrementCombo.emit()
+				key_to_pop.queue_free()
 			
 			elif distance_from_pass < good_press_treshold:
 				Signals.IncrementScore.emit(good_press_score)
 				press_score_text = "GOOD"
 				Signals.IncrementCombo.emit()
+				key_to_pop.queue_free()
 			
 			elif distance_from_pass < ok_press_treahold:
 				Signals.IncrementScore.emit(ok_press_score)
 				press_score_text = "OK"
 				Signals.IncrementCombo.emit()
-			
+				key_to_pop.queue_free()
 			else:
 				press_score_text = "MISS"
 				Signals.ResetCombo.emit()
 			
-			key_to_pop.queue_free()
+
+
 			
 			var st_inst = score_text.instantiate()
 			get_tree().get_root().call_deferred("add_child", st_inst)
