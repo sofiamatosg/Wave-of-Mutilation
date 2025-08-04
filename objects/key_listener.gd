@@ -12,10 +12,10 @@ var good_press_treshold: float = 48
 var ok_press_treahold: float = 68
 #otherwise, miss
 
-var perfect_press_score: float = 250
-var great_press_score: float = 100
-var good_press_score: float = 50
-var ok_press_score: float = 20
+var perfect_press_score: float = 25
+var great_press_score: float = 20
+var good_press_score: float = 5
+var ok_press_score: float = 2
 
 func _ready():
 	$GlowOverlay.frame = frame + 4
@@ -45,12 +45,6 @@ func _process(delta):
 				press_score_text = "MISS"
 				Signals.ResetCombo.emit()
 				falling_key_queue.pop_front()
-				key_to_pop.queue_free()
-			
-			elif distance_from_pass > 3 and distance_from_pass <= perfect_press_treshold:
-				Signals.IncrementScore.emit(perfect_press_score)
-				press_score_text = "PERFECT"
-				Signals.IncrementCombo.emit()
 				key_to_pop.queue_free()
 			
 			elif distance_from_pass < great_press_treshold:

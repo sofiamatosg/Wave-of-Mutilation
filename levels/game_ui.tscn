@@ -15,16 +15,22 @@ script = ExtResource("1_451jp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ScreenText" parent="CanvasLayer" instance=ExtResource("2_tpbhn")]
+offset_left = -36.0
+offset_top = 275.0
+offset_right = -36.0
+offset_bottom = 275.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -272.0
-offset_top = 21.0
-offset_right = -66.0
-offset_bottom = 78.0
+offset_right = 40.0
 grow_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 0.951)
+theme_override_colors/font_selected_color = Color(0.629471, 0.679987, 0.453332, 1)
 theme_override_fonts/normal_font = ExtResource("2_ul118")
 theme_override_font_sizes/normal_font_size = 40
 text = "0 pts"
@@ -32,21 +38,10 @@ scroll_active = false
 
 [node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -305.0
-offset_top = 91.0
-offset_right = -56.0
-offset_bottom = 148.0
+offset_right = 40.0
 grow_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 0.992)
 theme_override_fonts/normal_font = ExtResource("2_ul118")
 theme_override_font_sizes/normal_font_size = 40
-text = "0x Combo"
+text = "0x"
 scroll_active = false
-
-[node name="ScreenText" parent="CanvasLayer" instance=ExtResource("2_tpbhn")]
-offset_left = -36.0
-offset_top = 275.0
-offset_right = -36.0
-offset_bottom = 275.0

@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgnua7mp5ugd2"]
+[gd_scene load_steps=13 format=3 uid="uid://dgnua7mp5ugd2"]
 
-[ext_resource type="Texture2D" uid="uid://dj2lryh4oscn4" path="res://art/stephen-foster-memorial-day-illustration-with-copy-space-area-and-blue-background-suitable-to-use-on-memorial-day-event-vector.jpg" id="1_n0b0m"]
 [ext_resource type="PackedScene" uid="uid://c0c5bk8q4botv" path="res://objects/key_listener.tscn" id="1_qc6i3"]
+[ext_resource type="Texture2D" uid="uid://dwmfhaqkv4eqg" path="res://art/background.png" id="1_x6325"]
 [ext_resource type="PackedScene" uid="uid://bjbdbok88dyfc" path="res://objects/falling_key.tscn" id="2_sklrn"]
 [ext_resource type="PackedScene" uid="uid://my0vyubbvhxn" path="res://levels/game_ui.tscn" id="3_d65c1"]
 [ext_resource type="PackedScene" uid="uid://cgx2o2xtebrgv" path="res://objects/hold_tail.tscn" id="4_wtvao"]
 [ext_resource type="PackedScene" uid="uid://dsoxkm5i4lmjp" path="res://level_editor.tscn" id="5_2i5ty"]
 [ext_resource type="PackedScene" uid="uid://bn0jgwmv7lc28" path="res://objects/audio_control.tscn" id="7_smvv8"]
+[ext_resource type="PackedScene" uid="uid://b3aseihpqe6e3" path="res://objects/player.tscn" id="8_3n7cs"]
+[ext_resource type="Texture2D" uid="uid://d02e2o072m6li" path="res://art/bass.png" id="9_p4sme"]
+[ext_resource type="PackedScene" uid="uid://d2h7qqroxyx8n" path="res://objects/enemy.tscn" id="10_o8r0f"]
+[ext_resource type="Script" uid="uid://chdqggcye25kp" path="res://objects/enemy.gd" id="11_nwwuo"]
 
 [sub_resource type="Environment" id="Environment_d65c1"]
 background_mode = 3
@@ -17,9 +21,9 @@ glow_enabled = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(1.00001, -2.50002)
-scale = Vector2(0.664753, 0.660204)
-texture = ExtResource("1_n0b0m")
+position = Vector2(172, -3.00002)
+scale = Vector2(1.17101, 1.18464)
+texture = ExtResource("1_x6325")
 
 [node name="key_listener" parent="." instance=ExtResource("1_qc6i3")]
 position = Vector2(-520, 280)
@@ -41,9 +45,11 @@ frame = 3
 key_name = "button_right"
 
 [node name="FallingKey" parent="." instance=ExtResource("2_sklrn")]
+z_index = -1
 position = Vector2(-120, -350)
 
 [node name="HoldTail" parent="FallingKey" instance=ExtResource("4_wtvao")]
+visible = false
 scale = Vector2(8, 12.874)
 
 [node name="GameUI" parent="." instance=ExtResource("3_d65c1")]
@@ -58,3 +64,21 @@ environment = SubResource("Environment_d65c1")
 [node name="LevelEditor" parent="." instance=ExtResource("5_2i5ty")]
 
 [node name="AudioControl" parent="." instance=ExtResource("7_smvv8")]
+
+[node name="Player" parent="." instance=ExtResource("8_3n7cs")]
+position = Vector2(0, 100)
+
+[node name="Bass" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -833.0
+offset_top = 323.0
+offset_right = -185.0
+offset_bottom = 1254.0
+rotation = -1.57512
+texture = ExtResource("9_p4sme")
+
+[node name="Enemy" parent="." instance=ExtResource("10_o8r0f")]
+position = Vector2(382, 107)
+script = ExtResource("11_nwwuo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

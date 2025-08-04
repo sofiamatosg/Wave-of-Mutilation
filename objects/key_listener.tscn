@@ -41,6 +41,7 @@ _data = {
 }
 
 [node name="key_listener" type="Sprite2D"]
+texture_filter = 1
 texture = ExtResource("1_ewq7c")
 hframes = 4
 vframes = 3
