@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2h7qqroxyx8n"]
+[gd_scene load_steps=9 format=3 uid="uid://d2h7qqroxyx8n"]
 
 [ext_resource type="Texture2D" uid="uid://csiuh4o7tbaor" path="res://art/new_enemy.png" id="1_882u1"]
 [ext_resource type="PackedScene" uid="uid://b643kdsjh0m30" path="res://health_bar.tscn" id="2_7jlpp"]
@@ -9,6 +9,67 @@ size = Vector2(147, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jlpp"]
 size = Vector2(154, 247)
+
+[sub_resource type="Animation" id="Animation_we7g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_41oev"]
+resource_name = "enemy_walk"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-650, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-18, 135), Vector2(-642, 135)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hb37"]
+_data = {
+&"RESET": SubResource("Animation_we7g8"),
+&"enemy_walk": SubResource("Animation_41oev")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 
@@ -22,16 +83,25 @@ shape = SubResource("RectangleShape2D_882u1")
 [node name="Area2DEnemy" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DEnemy"]
-position = Vector2(-8, 13.5)
+position = Vector2(-8, 12)
 shape = SubResource("RectangleShape2D_7jlpp")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_7jlpp")]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -15.0
-offset_top = 136.0
-offset_right = 38.0
-offset_bottom = 161.0
+offset_left = -18.0
+offset_top = 135.0
+offset_right = 35.0
+offset_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 script = ExtResource("3_41oev")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3hb37")
+}
+autoplay = "enemy_walk"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-650, 0)

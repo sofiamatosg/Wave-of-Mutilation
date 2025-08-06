@@ -53,6 +53,7 @@ visible = false
 scale = Vector2(8, 12.874)
 
 [node name="GameUI" parent="." instance=ExtResource("3_d65c1")]
+z_index = 1
 offset_left = -603.0
 offset_top = -276.0
 offset_right = -603.0
@@ -78,7 +79,8 @@ rotation = -1.57512
 texture = ExtResource("9_p4sme")
 
 [node name="Enemy" parent="." instance=ExtResource("10_o8r0f")]
-position = Vector2(382, 107)
+position = Vector2(571, 151)
+up_direction = Vector2(0, 1)
 script = ExtResource("11_nwwuo")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

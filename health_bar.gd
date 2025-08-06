@@ -10,12 +10,10 @@ func _ready() -> void:
 	min_value_amount = parent.min_health
 	max_value_amount = parent.max_health
 	
-	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(parent.health)
+	#print(parent.health)
+	self.value = parent.health
 	if parent.health != max_value_amount:
 		self.visible = true
 		if parent.health == min_value_amount:
