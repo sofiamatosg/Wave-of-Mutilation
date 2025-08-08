@@ -21,3 +21,5 @@ func IncrementCombo():
 func ResetCombo():
 	combo_count = 0
 	%ComboLabel.text =  " "
+
+	

@@ -3,10 +3,13 @@ var health = 100
 var max_health = 100
 var min_health = 0
 var body_count = 0
+
 func _ready():
 	Signals.DecreaseLife.connect(DecreaseLife)
-	
+	await get_tree().create_timer(8.0).timeout
+
 	var anim = $AnimationPlayer.get_animation("enemy_walk")
+	$AnimationPlayer.play("enemy_walk")
 	anim.loop_mode = Animation.LOOP_LINEAR
 
 func DecreaseLife (damage: int):

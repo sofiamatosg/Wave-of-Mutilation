@@ -1,13 +1,15 @@
 extends Node
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+var original_scale = Vector2.ONE
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func _ready():
+	original_scale = %PlayButton.scale
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/game_level.tscn")
+	get_tree().change_scene_to_file("res://levels/game_level.tscn")
+
+func _on_play_button_mouse_entered() -> void:
+	%PlayButton.scale = Vector2(1.15, 1.15)
+
+func _on_play_button_mouse_exited() -> void:
+	%PlayButton.scale = original_scale

@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://my0vyubbvhxn"]
+[gd_scene load_steps=14 format=3 uid="uid://my0vyubbvhxn"]
 
 [ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
 [ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
 [ext_resource type="FontFile" uid="uid://cj86fhovucwri" path="res://objects/RockBoys-7BajD.ttf" id="2_ul118"]
+[ext_resource type="Script" uid="uid://c0sgqhhbeua4l" path="res://levels/pause.gd" id="4_3m8mx"]
+[ext_resource type="FontFile" uid="uid://dukcrd7aa36ab" path="res://art/WavePathPersonalUse-x3Gwr.ttf" id="5_p3b1a"]
+[ext_resource type="Texture2D" uid="uid://cr0byauptbsaw" path="res://art/pause.png" id="5_v1qec"]
+[ext_resource type="Script" uid="uid://bg3m2308rdw76" path="res://levels/music_slider.gd" id="6_p3b1a"]
+[ext_resource type="FontFile" uid="uid://d13x2o4ktjilu" path="res://art/RockBoys-7BajD.ttf" id="7_p3vix"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3vix"]
+bg_color = Color(1, 0.933333, 0.768627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcmbl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3x48"]
+bg_color = Color(0.866667, 0.717647, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1qec"]
+bg_color = Color(0.431373, 0.121569, 0.721569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3b1a"]
+bg_color = Color(0.431373, 0.121569, 0.721569, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -46,8 +74,161 @@ text = "0x"
 scroll_active = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
 offset_left = 533.0
 offset_top = 232.0
 offset_right = 771.0
 offset_bottom = 272.0
 text = "aaaaaaaa"
+
+[node name="Pause" type="Node" parent="CanvasLayer"]
+script = ExtResource("4_3m8mx")
+
+[node name="PausePanel" type="Panel" parent="CanvasLayer/Pause"]
+unique_name_in_owner = true
+visible = false
+offset_left = -3.0
+offset_top = -1.0
+offset_right = 1175.0
+offset_bottom = 656.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Pause/PausePanel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.062
+offset_left = 401.0
+offset_top = 250.0
+offset_right = 745.0
+offset_bottom = 249.266
+theme_override_fonts/normal_font = ExtResource("5_p3b1a")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] PAUSED"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Pause/PausePanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 2
+offset_left = 452.0
+offset_top = 295.0
+offset_right = 690.0
+offset_bottom = 335.0
+theme_override_fonts/font = ExtResource("7_p3vix")
+text = "Options"
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/Pause/PausePanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 2
+offset_left = 456.0
+offset_top = 360.0
+offset_right = 560.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("7_p3vix")
+text = "Menu"
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Pause/PausePanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 2
+offset_left = 585.0
+offset_top = 358.0
+offset_right = 688.0
+offset_bottom = 398.0
+theme_override_colors/icon_normal_color = Color(1, 0.933333, 0.768627, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fcmbl")
+text = "Continue"
+
+[node name="BackPanel" type="Panel" parent="CanvasLayer/Pause"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -106.0
+offset_right = 185.5
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
+
+[node name="OptionsPanel" type="Panel" parent="CanvasLayer/Pause"]
+process_mode = 3
+visible = false
+z_index = -1
+offset_left = -13.0
+offset_top = -17.0
+offset_right = 1173.0
+offset_bottom = 665.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/OptionsPanel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -63.5
+offset_right = 34.0
+offset_bottom = -26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_p3b1a")
+theme_override_font_sizes/font_size = 30
+text = "options
+"
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Pause/OptionsPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 584.0
+offset_top = 311.0
+offset_right = 738.0
+offset_bottom = 327.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_v1qec")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_p3b1a")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("6_p3b1a")
+audio_bus_name = "Music"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Pause/OptionsPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 549.0
+offset_top = 388.0
+offset_right = 625.0
+offset_bottom = 431.0
+theme_override_colors/icon_normal_color = Color(1, 0.93506, 0.767305, 1)
+theme_override_colors/font_color = Color(0, 0, 0.054902, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+text = "Back"
+flat = true
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_bottom = 205.0
+grow_horizontal = 0
+icon = ExtResource("5_v1qec")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="CanvasLayer/Pause/PausePanel/OptionsButton" to="CanvasLayer/Pause" method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PausePanel/MenuButton" to="CanvasLayer/Pause" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PausePanel/ContinueButton" to="CanvasLayer/Pause" method="_on_continue_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Pause/OptionsPanel/MusicSlider" to="CanvasLayer/Pause/OptionsPanel/MusicSlider" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Pause/OptionsPanel/BackButton" to="CanvasLayer/Pause" method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]

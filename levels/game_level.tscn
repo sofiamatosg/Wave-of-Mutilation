@@ -45,7 +45,6 @@ frame = 3
 key_name = "button_right"
 
 [node name="FallingKey" parent="." instance=ExtResource("2_sklrn")]
-z_index = -1
 position = Vector2(-120, -350)
 
 [node name="HoldTail" parent="FallingKey" instance=ExtResource("4_wtvao")]
@@ -79,7 +78,7 @@ rotation = -1.57512
 texture = ExtResource("9_p4sme")
 
 [node name="Enemy" parent="." instance=ExtResource("10_o8r0f")]
-position = Vector2(571, 151)
+position = Vector2(660, 160)
 up_direction = Vector2(0, 1)
 script = ExtResource("11_nwwuo")
 

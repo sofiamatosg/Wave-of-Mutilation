@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bod0wwhyhlnei" path="res://objects/falling_key.gd" id="2_uuajb"]
 
 [node name="FallingKey" type="Sprite2D"]
+z_index = -1
 texture_filter = 1
 texture = ExtResource("1_snaos")
 hframes = 4

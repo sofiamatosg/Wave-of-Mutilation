@@ -9,4 +9,5 @@ script = ExtResource("1_jnm6s")
 
 [node name="Drive" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_8j1b0")
+bus = &"Music"
 script = ExtResource("2_jnm6s")

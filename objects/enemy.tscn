@@ -11,7 +11,7 @@ size = Vector2(147, 240)
 size = Vector2(154, 247)
 
 [sub_resource type="Animation" id="Animation_we7g8"]
-length = 0.001
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +101,6 @@ script = ExtResource("3_41oev")
 libraries = {
 &"": SubResource("AnimationLibrary_3hb37")
 }
-autoplay = "enemy_walk"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-650, 0)
