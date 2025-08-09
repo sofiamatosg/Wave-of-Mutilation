@@ -11,8 +11,8 @@ script = ExtResource("1_ifaiv")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TextureRect2" type="Sprite2D" parent="."]
-position = Vector2(-2.37518, -0.999969)
-scale = Vector2(0.166369, 0.16146)
+position = Vector2(-2.37518, 1.99966)
+scale = Vector2(0.166369, 0.162959)
 texture = ExtResource("2_5k4jt")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

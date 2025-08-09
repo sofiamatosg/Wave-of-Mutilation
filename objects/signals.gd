@@ -2,6 +2,7 @@ extends Node2D
 
 signal IncrementScore(incr: int)
 
+signal Lost()
 signal IncrementCombo()
 signal ResetCombo()
 signal DecreaseLife (damage: int)

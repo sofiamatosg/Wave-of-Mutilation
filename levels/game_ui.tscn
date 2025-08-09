@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://my0vyubbvhxn"]
+[gd_scene load_steps=16 format=3 uid="uid://my0vyubbvhxn"]
 
 [ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
 [ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
@@ -8,11 +8,27 @@
 [ext_resource type="Texture2D" uid="uid://cr0byauptbsaw" path="res://art/pause.png" id="5_v1qec"]
 [ext_resource type="Script" uid="uid://bg3m2308rdw76" path="res://levels/music_slider.gd" id="6_p3b1a"]
 [ext_resource type="FontFile" uid="uid://d13x2o4ktjilu" path="res://art/RockBoys-7BajD.ttf" id="7_p3vix"]
+[ext_resource type="Script" uid="uid://b2qh11q0qtjiw" path="res://levels/lost.gd" id="9_fcmbl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcmbl"]
+bg_color = Color(1, 0.882353, 0.584314, 0.996078)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.576471, 0.462745, 0.231373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3vix"]
 bg_color = Color(1, 0.933333, 0.768627, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcmbl"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.576471, 0.462745, 0.231373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3x48"]
 bg_color = Color(0.866667, 0.717647, 0, 1)
@@ -31,6 +47,14 @@ bg_color = Color(0.431373, 0.121569, 0.721569, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3b1a"]
 bg_color = Color(0.431373, 0.121569, 0.721569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufduk"]
+bg_color = Color(1, 0.933333, 0.768627, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.576471, 0.462745, 0.231373, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -114,16 +138,20 @@ offset_left = 452.0
 offset_top = 295.0
 offset_right = 690.0
 offset_bottom = 335.0
+theme_override_colors/icon_normal_color = Color(0, 0, 0.988235, 1)
+theme_override_colors/font_color = Color(0.57656, 0.463131, 0.231622, 1)
 theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_fcmbl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p3vix")
 text = "Options"
 
 [node name="MenuButton" type="Button" parent="CanvasLayer/Pause/PausePanel"]
 process_mode = 3
 z_index = 1
 layout_mode = 2
-offset_left = 456.0
+offset_left = 449.0
 offset_top = 360.0
-offset_right = 560.0
+offset_right = 553.0
 offset_bottom = 400.0
 theme_override_fonts/font = ExtResource("7_p3vix")
 text = "Menu"
@@ -132,14 +160,11 @@ text = "Menu"
 process_mode = 3
 z_index = 1
 layout_mode = 2
-offset_left = 585.0
-offset_top = 358.0
-offset_right = 688.0
-offset_bottom = 398.0
-theme_override_colors/icon_normal_color = Color(1, 0.933333, 0.768627, 1)
+offset_left = 573.0
+offset_top = 362.0
+offset_right = 694.0
+offset_bottom = 402.0
 theme_override_fonts/font = ExtResource("7_p3vix")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_p3vix")
-theme_override_styles/normal = SubResource("StyleBoxFlat_fcmbl")
 text = "Continue"
 
 [node name="BackPanel" type="Panel" parent="CanvasLayer/Pause"]
@@ -160,6 +185,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
 
 [node name="OptionsPanel" type="Panel" parent="CanvasLayer/Pause"]
 process_mode = 3
+process_priority = 1
 visible = false
 z_index = -1
 offset_left = -13.0
@@ -226,9 +252,75 @@ icon = ExtResource("5_v1qec")
 flat = true
 expand_icon = true
 
+[node name="Lost" type="Node" parent="CanvasLayer"]
+script = ExtResource("9_fcmbl")
+
+[node name="LostPanel" type="Panel" parent="CanvasLayer/Lost"]
+visible = false
+offset_left = -5.0
+offset_top = -10.0
+offset_right = 1161.0
+offset_bottom = 660.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Lost/LostPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 520.0
+offset_top = 257.0
+offset_right = 663.0
+offset_bottom = 292.0
+theme_override_fonts/normal_font = ExtResource("5_p3b1a")
+theme_override_font_sizes/normal_font_size = 30
+text = "You lost"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/Lost/LostPanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 0
+offset_left = 501.0
+offset_top = 302.0
+offset_right = 676.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0.576471, 0.462745, 0.231373, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ufduk")
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Lost/LostPanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 0
+offset_left = 501.0
+offset_top = 365.0
+offset_right = 676.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(0.576471, 0.462745, 0.231373, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ufduk")
+text = "Exit
+"
+
+[node name="BackLostPanel" type="Panel" parent="CanvasLayer/Lost"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -106.0
+offset_right = 185.5
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
+
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/OptionsButton" to="CanvasLayer/Pause" method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/MenuButton" to="CanvasLayer/Pause" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/ContinueButton" to="CanvasLayer/Pause" method="_on_continue_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Pause/OptionsPanel/MusicSlider" to="CanvasLayer/Pause/OptionsPanel/MusicSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Pause/OptionsPanel/BackButton" to="CanvasLayer/Pause" method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Lost/LostPanel/RestartButton" to="CanvasLayer/Lost" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Lost/LostPanel/ExitButton" to="CanvasLayer/Lost" method="_on_exit_button_pressed"]

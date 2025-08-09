@@ -10,8 +10,14 @@ func _ready():
 
 	var anim = $AnimationPlayer.get_animation("enemy_walk")
 	$AnimationPlayer.play("enemy_walk")
+	await.get_tree()
 	anim.loop_mode = Animation.LOOP_LINEAR
 
+func _process(delta):
+	print(global_position.x)
+	if global_position.x <=50:
+		print("tchi tchi")
+		Signals.Lost.emit()
 func DecreaseLife (damage: int):
 	health -= damage
 	print(health)
