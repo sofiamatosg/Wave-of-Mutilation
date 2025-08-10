@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://rsx4v88h002y"]
+
+[ext_resource type="Texture2D" uid="uid://dwmfhaqkv4eqg" path="res://art/background.png" id="1_mii4g"]
+[ext_resource type="PackedScene" uid="uid://c0c5bk8q4botv" path="res://objects/key_listener.tscn" id="2_rdsv0"]
+[ext_resource type="Texture2D" uid="uid://dyjhtkmrm4ajt" path="res://art/Ícones Coloridos e Simples.png" id="3_whdab"]
+[ext_resource type="PackedScene" uid="uid://bjbdbok88dyfc" path="res://objects/falling_key.tscn" id="4_phv1y"]
+[ext_resource type="PackedScene" uid="uid://cgx2o2xtebrgv" path="res://objects/hold_tail.tscn" id="5_mfgeb"]
+[ext_resource type="PackedScene" uid="uid://my0vyubbvhxn" path="res://levels/game_ui.tscn" id="6_sgaq2"]
+[ext_resource type="PackedScene" uid="uid://dsoxkm5i4lmjp" path="res://level_editor.tscn" id="7_8i1r4"]
+[ext_resource type="PackedScene" uid="uid://bn0jgwmv7lc28" path="res://objects/audio_control.tscn" id="8_d163y"]
+[ext_resource type="PackedScene" uid="uid://b3aseihpqe6e3" path="res://objects/player.tscn" id="9_43c8h"]
+[ext_resource type="Texture2D" uid="uid://d02e2o072m6li" path="res://art/bass.png" id="10_axrnb"]
+[ext_resource type="PackedScene" uid="uid://d2h7qqroxyx8n" path="res://objects/enemy.tscn" id="11_0gegn"]
+[ext_resource type="Script" uid="uid://chdqggcye25kp" path="res://objects/enemy.gd" id="12_rr06r"]
+
+[sub_resource type="Environment" id="Environment_d65c1"]
+background_mode = 3
+glow_enabled = true
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(172, -3.00002)
+scale = Vector2(1.17101, 1.18464)
+texture = ExtResource("1_mii4g")
+
+[node name="key_listener" parent="." instance=ExtResource("2_rdsv0")]
+position = Vector2(-520, 280)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_whdab")
+key_name = "button_left"
+
+[node name="key_listener2" parent="." instance=ExtResource("2_rdsv0")]
+position = Vector2(-440, 280)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_whdab")
+frame = 1
+key_name = "button_down"
+
+[node name="key_listener3" parent="." instance=ExtResource("2_rdsv0")]
+position = Vector2(-360, 280)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_whdab")
+frame = 2
+key_name = "button_up"
+
+[node name="key_listener4" parent="." instance=ExtResource("2_rdsv0")]
+position = Vector2(-280, 280)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_whdab")
+frame = 3
+key_name = "button_right"
+
+[node name="FallingKey" parent="." instance=ExtResource("4_phv1y")]
+position = Vector2(-120, -350)
+
+[node name="HoldTail" parent="FallingKey" instance=ExtResource("5_mfgeb")]
+visible = false
+scale = Vector2(8, 12.874)
+
+[node name="GameUI" parent="." instance=ExtResource("6_sgaq2")]
+z_index = 1
+offset_left = -603.0
+offset_top = -276.0
+offset_right = -603.0
+offset_bottom = -276.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d65c1")
+
+[node name="LevelEditor" parent="." instance=ExtResource("7_8i1r4")]
+
+[node name="AudioControl" parent="." instance=ExtResource("8_d163y")]
+
+[node name="Player" parent="." instance=ExtResource("9_43c8h")]
+position = Vector2(0, 100)
+
+[node name="Bass" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -833.0
+offset_top = 323.0
+offset_right = -185.0
+offset_bottom = 1254.0
+rotation = -1.57512
+texture = ExtResource("10_axrnb")
+
+[node name="Enemy" parent="." instance=ExtResource("11_0gegn")]
+position = Vector2(660, 160)
+up_direction = Vector2(0, 1)
+script = ExtResource("12_rr06r")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -12,6 +12,7 @@ extends Node
 
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	back_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -66,3 +67,7 @@ func _on_back_button_pressed() -> void:
 	back_panel.show()
 	pause_button.hide()
 	options_panel.hide()	
+
+
+func _on_next_button_pressed() -> void:
+	pass # Replace with function body.

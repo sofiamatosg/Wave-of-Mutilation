@@ -80,7 +80,8 @@ func _process(delta):
 			st_inst.SetTextInfo(press_score_text)
 			st_inst.global_position = global_position + Vector2(0, -15)
 	else:
-		Signals.Win.emit()	
+		#Signals.Win.emit()
+		print("awerwer")
 func CreateFallingKey(button_name: String):
 	if button_name == key_name:
 		var fk_inst = falling_key.instantiate()

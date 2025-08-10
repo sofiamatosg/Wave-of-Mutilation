@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://my0vyubbvhxn"]
+[gd_scene load_steps=21 format=3 uid="uid://my0vyubbvhxn"]
 
 [ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
 [ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ci05im8q1nmnh" path="res://art/360_F_530663142_QTG97MsHYkWxjpMhx2w6ROYxi07I9ct2-removebg-preview.png" id="8_k3x48"]
 [ext_resource type="Script" uid="uid://b2qh11q0qtjiw" path="res://levels/lost.gd" id="9_fcmbl"]
 [ext_resource type="Script" uid="uid://b0lihydtt60ck" path="res://levels/sfx_slider.gd" id="9_ufduk"]
+[ext_resource type="Script" uid="uid://ctl3jocqyqynm" path="res://levels/win.gd" id="12_pxbww"]
+[ext_resource type="Texture2D" uid="uid://qms8fhvwvv6p" path="res://art/smiley_face.png" id="13_0xb6s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcmbl"]
 bg_color = Color(1, 0.882353, 0.584314, 0.996078)
@@ -380,6 +382,86 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
 
+[node name="Win" type="Node" parent="CanvasLayer"]
+script = ExtResource("12_pxbww")
+
+[node name="WinPanel" type="Panel" parent="CanvasLayer/Win"]
+visible = false
+offset_left = -5.0
+offset_top = -10.0
+offset_right = 1161.0
+offset_bottom = 660.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Win/WinPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 520.0
+offset_top = 257.0
+offset_right = 663.0
+offset_bottom = 292.0
+theme_override_fonts/normal_font = ExtResource("5_p3b1a")
+theme_override_font_sizes/normal_font_size = 30
+text = "You win"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/Win/WinPanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 0
+offset_left = 426.0
+offset_top = 302.0
+offset_right = 601.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0.576471, 0.462745, 0.231373, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ufduk")
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Win/WinPanel"]
+process_mode = 3
+z_index = 1
+layout_mode = 0
+offset_left = 425.0
+offset_top = 366.0
+offset_right = 600.0
+offset_bottom = 417.0
+theme_override_colors/font_color = Color(0.576471, 0.462745, 0.231373, 1)
+theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ufduk")
+text = "Exit
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Win/WinPanel"]
+z_index = 1
+position = Vector2(679, 315)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_0xb6s")
+
+[node name="NextButton" type="Button" parent="CanvasLayer/Win/WinPanel"]
+process_mode = 3
+z_index = 1
+offset_left = 630.0
+offset_top = 370.0
+offset_right = 734.0
+offset_bottom = 410.0
+theme_override_fonts/font = ExtResource("7_p3vix")
+text = "Next"
+
+[node name="BackWinPanel" type="Panel" parent="CanvasLayer/Win"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -106.0
+offset_right = 185.5
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
+
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/OptionsButton" to="CanvasLayer/Pause" method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/MenuButton" to="CanvasLayer/Pause" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/ContinueButton" to="CanvasLayer/Pause" method="_on_continue_button_pressed"]
@@ -389,3 +471,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/LostPanel/RestartButton" to="CanvasLayer/Lost" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/LostPanel/ExitButton" to="CanvasLayer/Lost" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Win/WinPanel/RestartButton" to="CanvasLayer/Win" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Win/WinPanel/ExitButton" to="CanvasLayer/Win" method="_on_exit_button_pressed"]
