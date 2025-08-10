@@ -21,6 +21,7 @@ var ok_press_score: float = 2
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		Signals.PlayAnimation.emit()
+
 func _ready():
 	$GlowOverlay.frame = frame + 4
 	Signals.CreateFallingKey.connect(CreateFallingKey)
@@ -79,9 +80,7 @@ func _process(delta):
 			get_tree().get_root().call_deferred("add_child", st_inst)
 			st_inst.SetTextInfo(press_score_text)
 			st_inst.global_position = global_position + Vector2(0, -15)
-	else:
-		#Signals.Win.emit()
-		print("awerwer")
+
 func CreateFallingKey(button_name: String):
 	if button_name == key_name:
 		var fk_inst = falling_key.instantiate()

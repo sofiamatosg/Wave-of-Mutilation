@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2h7qqroxyx8n"]
+[gd_scene load_steps=15 format=3 uid="uid://d2h7qqroxyx8n"]
 
 [ext_resource type="Texture2D" uid="uid://ou41b8n2ph61" path="res://art/Enemy1.png" id="1_we7g8"]
 [ext_resource type="Texture2D" uid="uid://c5a3kl2fxfsjm" path="res://art/Enemy2.png" id="2_3hb37"]
 [ext_resource type="PackedScene" uid="uid://b643kdsjh0m30" path="res://health_bar.tscn" id="2_7jlpp"]
 [ext_resource type="Script" uid="uid://0iuxyjme4t3y" path="res://health_bar.gd" id="3_41oev"]
+[ext_resource type="PackedScene" uid="uid://dlgyxc8y7xann" path="res://objects/enemy_key.tscn" id="5_l24ub"]
+[ext_resource type="Texture2D" uid="uid://dyjhtkmrm4ajt" path="res://art/Ícones Coloridos e Simples.png" id="6_lw0qc"]
+[ext_resource type="Script" uid="uid://deejg6qb6owny" path="res://objects/enemy_key.gd" id="7_migdc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ld5k"]
 animations = [{
@@ -52,9 +55,33 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-18, 135), Vector2(-642, 135)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-642, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_we7g8"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3hb37"]
 _data = {
@@ -62,13 +89,16 @@ _data = {
 &"enemy_walk": SubResource("Animation_41oev")
 }
 
+[sub_resource type="Theme" id="Theme_l24ub"]
+
 [node name="Enemy" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-445.882, 0)
 sprite_frames = SubResource("SpriteFrames_2ld5k")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.0595303
+frame_progress = 0.488886
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.5, 13)
@@ -83,9 +113,9 @@ shape = SubResource("RectangleShape2D_7jlpp")
 [node name="HealthBar" parent="." instance=ExtResource("2_7jlpp")]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -18.0
+offset_left = -446.047
 offset_top = 135.0
-offset_right = 35.0
+offset_right = -393.047
 offset_bottom = 160.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -98,3 +128,48 @@ libraries = {
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-650, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_l24ub")
+
+[node name="EnemyKey" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
+z_index = 1
+position = Vector2(-19, -133)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_lw0qc")
+hframes = 4
+vframes = 4
+frame = 4
+script = ExtResource("7_migdc")
+
+[node name="EnemyKey2" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
+z_index = 1
+position = Vector2(15, -133)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_lw0qc")
+hframes = 4
+vframes = 4
+frame = 4
+script = ExtResource("7_migdc")
+
+[node name="EnemyKey3" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
+z_index = 1
+position = Vector2(49, -133)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_lw0qc")
+hframes = 4
+vframes = 4
+frame = 4
+script = ExtResource("7_migdc")
+
+[node name="EnemyKey4" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
+z_index = 1
+position = Vector2(83, -133)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_lw0qc")
+hframes = 4
+vframes = 4
+frame = 4
+script = ExtResource("7_migdc")

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dlgyxc8y7xann"]
+
+[node name="EnemyKey" type="Sprite2D"]

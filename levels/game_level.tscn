@@ -79,9 +79,9 @@ position = Vector2(0, 100)
 
 [node name="Bass" type="TextureRect" parent="."]
 z_index = -1
-offset_left = -833.0
+offset_left = -832.0
 offset_top = 323.0
-offset_right = -185.0
+offset_right = -184.0
 offset_bottom = 1254.0
 rotation = -1.57512
 texture = ExtResource("9_p4sme")

@@ -9,7 +9,7 @@ var sprite_x = $AnimatedSprite2D.global_position.x
 func _ready():
 	Signals.DecreaseLife.connect(DecreaseLife)
 	await get_tree().create_timer(8.0).timeout
-	animated_sprite_2d.play("play")
+	animated_sprite_2d.play("run")
 	var anim = $AnimationPlayer.get_animation("enemy_walk")
 	$AnimationPlayer.play("enemy_walk")
 	
@@ -19,6 +19,11 @@ func _process(delta):
 	var sprite_global = $AnimatedSprite2D.to_global(Vector2.ZERO)
 	if sprite_global.x <=  50 and health > 0:
 		Signals.Lost.emit()
+	print(sprite_global.x)
+	if sprite_global.x < 658 and sprite_global.x > 656:
+		Signals.Start.emit()
+		print("CUIO")
+		
 func DecreaseLife (damage: int):
 	health -= damage
 	if health <= 0:

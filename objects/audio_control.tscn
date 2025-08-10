@@ -22,8 +22,8 @@ stream = ExtResource("4_qb6e3")
 bus = &"SFX"
 
 [node name="Ocean" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("5_rhtlh")
-bus = &"SFX"
 
 [node name="Intro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_dto0i")

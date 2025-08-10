@@ -439,6 +439,7 @@ texture = ExtResource("13_0xb6s")
 [node name="NextButton" type="Button" parent="CanvasLayer/Win/WinPanel"]
 process_mode = 3
 z_index = 1
+layout_mode = 0
 offset_left = 630.0
 offset_top = 370.0
 offset_right = 734.0
