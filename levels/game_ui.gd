@@ -7,7 +7,7 @@ func _ready() -> void:
 	Signals.IncrementScore.connect(IncrementScore)
 	Signals.IncrementCombo.connect(IncrementCombo)
 	Signals.ResetCombo.connect(ResetCombo)
-	
+	Signals.Win.connect(Win)
 	ResetCombo()
 	
 func IncrementScore(incr:int):
@@ -22,4 +22,6 @@ func ResetCombo():
 	combo_count = 0
 	%ComboLabel.text =  " "
 
+func Win():
+	print("tomato")
 	

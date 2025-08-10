@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn0jgwmv7lc28"]
+[gd_scene load_steps=9 format=3 uid="uid://bn0jgwmv7lc28"]
 
 [ext_resource type="AudioStream" uid="uid://th3x2p7em84s" path="res://music/Drive.wav" id="1_8j1b0"]
 [ext_resource type="Script" uid="uid://bvuh81csvgfop" path="res://objects/audio_control.gd" id="1_jnm6s"]
 [ext_resource type="Script" uid="uid://c77slq78rlm2f" path="res://objects/drive.gd" id="2_jnm6s"]
+[ext_resource type="AudioStream" uid="uid://by5hjuie2ooen" path="res://music/losing-horn-313723.mp3" id="4_qb6e3"]
+[ext_resource type="AudioStream" uid="uid://cf846p0whvg5n" path="res://music/ocean-wave-slowly-236010.mp3" id="5_rhtlh"]
+[ext_resource type="AudioStream" uid="uid://ca1xu7ctdb75a" path="res://music/punk-rock-guitar-loop-278767.mp3" id="6_dto0i"]
+[ext_resource type="AudioStream" uid="uid://bqc5shd7jbf0x" path="res://music/you-win-sequence-2-183949.mp3" id="7_lchdt"]
+[ext_resource type="AudioStream" uid="uid://bmet6bykwqjvj" path="res://music/wood-block-105066.mp3" id="7_rhtlh"]
 
 [node name="AudioControl" type="Node"]
 script = ExtResource("1_jnm6s")
@@ -11,3 +16,20 @@ script = ExtResource("1_jnm6s")
 stream = ExtResource("1_8j1b0")
 bus = &"Music"
 script = ExtResource("2_jnm6s")
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qb6e3")
+bus = &"SFX"
+
+[node name="Ocean" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rhtlh")
+bus = &"SFX"
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dto0i")
+
+[node name="Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rhtlh")
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lchdt")

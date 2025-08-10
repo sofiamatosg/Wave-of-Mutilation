@@ -1,8 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2h7qqroxyx8n"]
+[gd_scene load_steps=11 format=3 uid="uid://d2h7qqroxyx8n"]
 
-[ext_resource type="Texture2D" uid="uid://csiuh4o7tbaor" path="res://art/new_enemy.png" id="1_882u1"]
+[ext_resource type="Texture2D" uid="uid://ou41b8n2ph61" path="res://art/Enemy1.png" id="1_we7g8"]
+[ext_resource type="Texture2D" uid="uid://c5a3kl2fxfsjm" path="res://art/Enemy2.png" id="2_3hb37"]
 [ext_resource type="PackedScene" uid="uid://b643kdsjh0m30" path="res://health_bar.tscn" id="2_7jlpp"]
 [ext_resource type="Script" uid="uid://0iuxyjme4t3y" path="res://health_bar.gd" id="3_41oev"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ld5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_we7g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3hb37")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_882u1"]
 size = Vector2(147, 240)
@@ -16,7 +31,7 @@ length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("AnimatedSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,8 +64,11 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_882u1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2ld5k")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.0595303
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.5, 13)

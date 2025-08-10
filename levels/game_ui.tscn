@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://my0vyubbvhxn"]
+[gd_scene load_steps=19 format=3 uid="uid://my0vyubbvhxn"]
 
 [ext_resource type="Script" uid="uid://cffbv5rbvv73r" path="res://levels/game_ui.gd" id="1_451jp"]
 [ext_resource type="PackedScene" uid="uid://b6lcp3jjkr3nc" path="res://levels/screen_text.tscn" id="2_tpbhn"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cr0byauptbsaw" path="res://art/pause.png" id="5_v1qec"]
 [ext_resource type="Script" uid="uid://bg3m2308rdw76" path="res://levels/music_slider.gd" id="6_p3b1a"]
 [ext_resource type="FontFile" uid="uid://d13x2o4ktjilu" path="res://art/RockBoys-7BajD.ttf" id="7_p3vix"]
+[ext_resource type="Texture2D" uid="uid://ci05im8q1nmnh" path="res://art/360_F_530663142_QTG97MsHYkWxjpMhx2w6ROYxi07I9ct2-removebg-preview.png" id="8_k3x48"]
 [ext_resource type="Script" uid="uid://b2qh11q0qtjiw" path="res://levels/lost.gd" id="9_fcmbl"]
+[ext_resource type="Script" uid="uid://b0lihydtt60ck" path="res://levels/sfx_slider.gd" id="9_ufduk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcmbl"]
 bg_color = Color(1, 0.882353, 0.584314, 0.996078)
@@ -47,6 +49,14 @@ bg_color = Color(0.431373, 0.121569, 0.721569, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3b1a"]
 bg_color = Color(0.431373, 0.121569, 0.721569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og18g"]
+bg_color = Color(1, 0.933333, 0.768627, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.576471, 0.462745, 0.231373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufduk"]
 bg_color = Color(1, 0.933333, 0.768627, 1)
@@ -213,11 +223,12 @@ text = "options
 "
 
 [node name="MusicSlider" type="HSlider" parent="CanvasLayer/Pause/OptionsPanel"]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
-offset_left = 584.0
+offset_left = 570.0
 offset_top = 311.0
-offset_right = 738.0
+offset_right = 724.0
 offset_bottom = 327.0
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_v1qec")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_p3b1a")
@@ -230,15 +241,68 @@ audio_bus_name = "Music"
 [node name="BackButton" type="Button" parent="CanvasLayer/Pause/OptionsPanel"]
 z_index = 1
 layout_mode = 0
-offset_left = 549.0
-offset_top = 388.0
-offset_right = 625.0
-offset_bottom = 431.0
-theme_override_colors/icon_normal_color = Color(1, 0.93506, 0.767305, 1)
-theme_override_colors/font_color = Color(0, 0, 0.054902, 1)
+offset_left = 542.0
+offset_top = 399.0
+offset_right = 618.0
+offset_bottom = 435.0
+theme_override_colors/font_color = Color(0.576471, 0.462745, 0.231373, 1)
 theme_override_fonts/font = ExtResource("7_p3vix")
+theme_override_styles/normal = SubResource("StyleBoxFlat_og18g")
 text = "Back"
-flat = true
+
+[node name="MusicSymbol" type="Sprite2D" parent="CanvasLayer/Pause/OptionsPanel"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(540, 318)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("8_k3x48")
+hframes = 2
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/Pause/OptionsPanel"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 570.0
+offset_top = 363.0
+offset_right = 724.0
+offset_bottom = 379.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_v1qec")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_p3b1a")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("9_ufduk")
+audio_bus_name = "SFX"
+
+[node name="SFXSymbol" type="Sprite2D" parent="CanvasLayer/Pause/OptionsPanel"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(540, 370)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("8_k3x48")
+hframes = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Pause/OptionsPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 456.0
+offset_top = 310.0
+offset_right = 515.0
+offset_bottom = 331.0
+theme_override_fonts/font = ExtResource("5_p3b1a")
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Pause/OptionsPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 472.0
+offset_top = 362.0
+offset_right = 508.0
+offset_bottom = 383.0
+theme_override_fonts/font = ExtResource("5_p3b1a")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
 
 [node name="PauseButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -321,6 +385,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
 [connection signal="pressed" from="CanvasLayer/Pause/PausePanel/ContinueButton" to="CanvasLayer/Pause" method="_on_continue_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Pause/OptionsPanel/MusicSlider" to="CanvasLayer/Pause/OptionsPanel/MusicSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Pause/OptionsPanel/BackButton" to="CanvasLayer/Pause" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Pause/OptionsPanel/SFXSlider" to="CanvasLayer/Pause/OptionsPanel/SFXSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/LostPanel/RestartButton" to="CanvasLayer/Lost" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/LostPanel/ExitButton" to="CanvasLayer/Lost" method="_on_exit_button_pressed"]

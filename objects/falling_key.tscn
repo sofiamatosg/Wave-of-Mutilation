@@ -1,14 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjbdbok88dyfc"]
 
-[ext_resource type="Texture2D" uid="uid://bv8rgbvfg1v8i" path="res://art/arrows.webp" id="1_snaos"]
+[ext_resource type="Texture2D" uid="uid://dyjhtkmrm4ajt" path="res://art/Ícones Coloridos e Simples.png" id="1_uuajb"]
 [ext_resource type="Script" uid="uid://bod0wwhyhlnei" path="res://objects/falling_key.gd" id="2_uuajb"]
 
 [node name="FallingKey" type="Sprite2D"]
 z_index = -1
 texture_filter = 1
-texture = ExtResource("1_snaos")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_uuajb")
 hframes = 4
-vframes = 3
+vframes = 4
 frame = 4
 script = ExtResource("2_uuajb")
 

@@ -2,6 +2,8 @@ extends Node2D
 
 signal IncrementScore(incr: int)
 
+signal Win()
+signal PlayAnimation()
 signal Lost()
 signal IncrementCombo()
 signal ResetCombo()
