@@ -7,12 +7,16 @@ var sprite_x = $AnimatedSprite2D.global_position.x
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
+	var sprite_global = $AnimatedSprite2D.to_global(Vector2.ZERO)
 	Signals.DecreaseLife.connect(DecreaseLife)
 	await get_tree().create_timer(8.0).timeout
 	animated_sprite_2d.play("run")
+
 	var anim = $AnimationPlayer.get_animation("enemy_walk")
 	$AnimationPlayer.play("enemy_walk")
-	
+	sprite_x = 660
+	sprite_global.x= 660
+	self.hide()
 	anim.loop_mode = Animation.LOOP_LINEAR
 
 func _process(delta):
@@ -22,6 +26,7 @@ func _process(delta):
 	print(sprite_global.x)
 	if sprite_global.x < 658 and sprite_global.x > 656:
 		Signals.Start.emit()
+		self.show()
 		print("CUIO")
 		
 func DecreaseLife (damage: int):

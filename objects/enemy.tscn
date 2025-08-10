@@ -28,6 +28,21 @@ size = Vector2(147, 240)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jlpp"]
 size = Vector2(154, 247)
 
+[sub_resource type="Animation" id="Animation_we7g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_41oev"]
 resource_name = "enemy_walk"
 length = 7.0
@@ -68,21 +83,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(-642, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_we7g8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3hb37"]
 _data = {
 &"RESET": SubResource("Animation_we7g8"),
@@ -94,7 +94,6 @@ _data = {
 [node name="Enemy" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-445.882, 0)
 sprite_frames = SubResource("SpriteFrames_2ld5k")
 animation = &"run"
 autoplay = "run"
@@ -113,10 +112,10 @@ shape = SubResource("RectangleShape2D_7jlpp")
 [node name="HealthBar" parent="." instance=ExtResource("2_7jlpp")]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -446.047
-offset_top = 135.0
-offset_right = -393.047
-offset_bottom = 160.0
+offset_left = -14.0
+offset_top = 145.0
+offset_right = 39.0
+offset_bottom = 170.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 script = ExtResource("3_41oev")

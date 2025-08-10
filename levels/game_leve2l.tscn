@@ -76,6 +76,7 @@ environment = SubResource("Environment_d65c1")
 position = Vector2(83, 146)
 
 [node name="Enemy" parent="." instance=ExtResource("11_0gegn")]
+visible = false
 position = Vector2(660, 160)
 up_direction = Vector2(0, 1)
 script = ExtResource("12_rr06r")
