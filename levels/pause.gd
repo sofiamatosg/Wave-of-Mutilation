@@ -8,6 +8,7 @@ extends Node
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sfx_symbol: Sprite2D = %SFXSymbol
 @onready var sfx_slider: HSlider = %SFXSlider
+@onready var next_button: Button = %NextButton
 
 
 
@@ -70,4 +71,6 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_next_button_pressed() -> void:
-	pass # Replace with function body.
+	print("AAAAAAAAAAAAA")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://levels/game_leve2l.tscn")

@@ -437,6 +437,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_0xb6s")
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Win/WinPanel"]
+unique_name_in_owner = true
 process_mode = 3
 z_index = 1
 layout_mode = 0
@@ -474,3 +475,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k3x48")
 [connection signal="pressed" from="CanvasLayer/Lost/LostPanel/ExitButton" to="CanvasLayer/Lost" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Win/WinPanel/RestartButton" to="CanvasLayer/Win" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Win/WinPanel/ExitButton" to="CanvasLayer/Win" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Win/WinPanel/NextButton" to="CanvasLayer/Pause" method="_on_next_button_pressed"]

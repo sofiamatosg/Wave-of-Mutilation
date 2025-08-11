@@ -25,6 +25,8 @@ func _input(event):
 func _ready():
 	$GlowOverlay.frame = frame + 4
 	Signals.CreateFallingKey.connect(CreateFallingKey)
+	await get_tree().create_timer(80).timeout
+	Signals.Win.emit()
 
 func _process(delta):
 	if falling_key_queue.size() > 0:

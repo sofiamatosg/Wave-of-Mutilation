@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2h7qqroxyx8n"]
+[gd_scene load_steps=18 format=3 uid="uid://d2h7qqroxyx8n"]
 
 [ext_resource type="Texture2D" uid="uid://ou41b8n2ph61" path="res://art/Enemy1.png" id="1_we7g8"]
 [ext_resource type="Texture2D" uid="uid://c5a3kl2fxfsjm" path="res://art/Enemy2.png" id="2_3hb37"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dlgyxc8y7xann" path="res://objects/enemy_key.tscn" id="5_l24ub"]
 [ext_resource type="Texture2D" uid="uid://dyjhtkmrm4ajt" path="res://art/Ícones Coloridos e Simples.png" id="6_lw0qc"]
 [ext_resource type="Script" uid="uid://deejg6qb6owny" path="res://objects/enemy_key.gd" id="7_migdc"]
+[ext_resource type="Script" uid="uid://t63s8cpo5527" path="res://objects/enemy_key2.gd" id="8_dkbxi"]
+[ext_resource type="Script" uid="uid://bhugnib5p8aj" path="res://objects/enemy_key3.gd" id="9_gusmx"]
+[ext_resource type="Script" uid="uid://gyrho5wy5boo" path="res://objects/enemy_key4.gd" id="10_n7us5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ld5k"]
 animations = [{
@@ -151,7 +154,7 @@ texture = ExtResource("6_lw0qc")
 hframes = 4
 vframes = 4
 frame = 4
-script = ExtResource("7_migdc")
+script = ExtResource("8_dkbxi")
 
 [node name="EnemyKey3" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
 z_index = 1
@@ -161,7 +164,7 @@ texture = ExtResource("6_lw0qc")
 hframes = 4
 vframes = 4
 frame = 4
-script = ExtResource("7_migdc")
+script = ExtResource("9_gusmx")
 
 [node name="EnemyKey4" parent="HBoxContainer" instance=ExtResource("5_l24ub")]
 z_index = 1
@@ -171,4 +174,4 @@ texture = ExtResource("6_lw0qc")
 hframes = 4
 vframes = 4
 frame = 4
-script = ExtResource("7_migdc")
+script = ExtResource("10_n7us5")

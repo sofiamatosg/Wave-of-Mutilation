@@ -1,19 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn0jgwmv7lc28"]
+[gd_scene load_steps=13 format=3 uid="uid://bn0jgwmv7lc28"]
 
-[ext_resource type="AudioStream" uid="uid://th3x2p7em84s" path="res://music/Drive.wav" id="1_8j1b0"]
 [ext_resource type="Script" uid="uid://bvuh81csvgfop" path="res://objects/audio_control.gd" id="1_jnm6s"]
+[ext_resource type="AudioStream" uid="uid://cqkbv554b3bxp" path="res://music/audiocleaner_20250720_165250_Pulse Drive (1)_other.wav" id="2_cl1jj"]
 [ext_resource type="Script" uid="uid://c77slq78rlm2f" path="res://objects/drive.gd" id="2_jnm6s"]
 [ext_resource type="AudioStream" uid="uid://by5hjuie2ooen" path="res://music/losing-horn-313723.mp3" id="4_qb6e3"]
 [ext_resource type="AudioStream" uid="uid://cf846p0whvg5n" path="res://music/ocean-wave-slowly-236010.mp3" id="5_rhtlh"]
 [ext_resource type="AudioStream" uid="uid://ca1xu7ctdb75a" path="res://music/punk-rock-guitar-loop-278767.mp3" id="6_dto0i"]
 [ext_resource type="AudioStream" uid="uid://bqc5shd7jbf0x" path="res://music/you-win-sequence-2-183949.mp3" id="7_lchdt"]
 [ext_resource type="AudioStream" uid="uid://bmet6bykwqjvj" path="res://music/wood-block-105066.mp3" id="7_rhtlh"]
+[ext_resource type="AudioStream" uid="uid://7sahtmpcf0q8" path="res://music/yellow.wav" id="9_cl1jj"]
+[ext_resource type="AudioStream" uid="uid://2kj27337x0q" path="res://music/blue.wav" id="10_whcaw"]
+[ext_resource type="AudioStream" uid="uid://iswslkbq4old" path="res://music/green.wav" id="11_1hgu5"]
+[ext_resource type="AudioStream" uid="uid://c8sr5ki73a23q" path="res://music/pink.wav" id="12_n3467"]
 
 [node name="AudioControl" type="Node"]
 script = ExtResource("1_jnm6s")
 
 [node name="Drive" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_8j1b0")
+stream = ExtResource("2_cl1jj")
 bus = &"Music"
 script = ExtResource("2_jnm6s")
 
@@ -33,3 +37,15 @@ stream = ExtResource("7_rhtlh")
 
 [node name="Win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_lchdt")
+
+[node name="Yellow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_cl1jj")
+
+[node name="Blue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_whcaw")
+
+[node name="Green" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1hgu5")
+
+[node name="Pink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_n3467")
